@@ -14,7 +14,7 @@ const[ role_, setRole]=useState('user');
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/auth/login', { email, password });
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, { email, password });
       const { token, role, credits, username,lastLoginDate } = res.data;
 
       setUserData({ token, role, credits });

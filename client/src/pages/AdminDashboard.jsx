@@ -28,12 +28,12 @@ export default function UserDashboard() {
     if (!isAuthenticated) return;
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/admin`, {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin`, {
         headers: { Authorization: `Bearer ${userData.token}` }
       });
       setUsers(response.data);
 
-      const response1 = await axios.get(`http://localhost:5000/admin/posts`, {
+      const response1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin/posts`, {
         headers: { Authorization: `Bearer ${userData.token}` }
       });
       setPosts(response1.data)

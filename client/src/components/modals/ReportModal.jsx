@@ -49,7 +49,7 @@ const ReportModal = ({ isOpen, onClose, post, token, onReportSubmitted }) => {
       setIsSubmitting(true);
       
       const response = await axios.post(
-        'http://localhost:5000/feeds/report',
+        `${import.meta.env.VITE_BACKEND_URL}/feeds/report`,
         reportData,
         { headers: { Authorization: `Bearer ${token}` }}
       );

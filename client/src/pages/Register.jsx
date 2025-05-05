@@ -16,7 +16,7 @@ const[ role_, setRole]=useState('user');
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/auth/register', formData);
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`, formData);
       const { token, role, credits } = response.data;
       setUserData({ token, role, credits });
       setRole(role);

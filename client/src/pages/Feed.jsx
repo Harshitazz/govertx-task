@@ -22,7 +22,7 @@ const [showModal,setShowModal]= useState(false)
   const fetchFeed = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/feeds`);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/feeds`);
       setPosts(response.data);
       setLoading(false);
     } catch (error) {
@@ -37,7 +37,7 @@ const [showModal,setShowModal]= useState(false)
     if (!isAuthenticated) return;
 
     try {
-      const response = await axios.get(`http://localhost:5000/feeds/saved`, {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/feeds/saved`, {
         headers: { Authorization: `Bearer ${userData.token}` }
       });
       setSavedPosts(response.data);
@@ -64,7 +64,7 @@ const [showModal,setShowModal]= useState(false)
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/feeds/save`,
+        `${import.meta.env.VITE_BACKEND_URL}/feeds/save`,
         { feedId: post._id },
         { headers: { Authorization: `Bearer ${userData?.token}` } }
       );

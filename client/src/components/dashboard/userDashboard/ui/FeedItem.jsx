@@ -19,7 +19,7 @@ const FeedItem = ({ id, title, link, date, source, onRemove, token }) => {
   const handleRemoveClick = async () => {
     try {
       const res = await axios.post(
-        'http://localhost:5000/feeds/remove-feed',
+        `${import.meta.env.VITE_BACKEND_URL}/feeds/remove-feed`,
         { feedId: id },
         { headers: { Authorization: `Bearer ${token}` } }
       );

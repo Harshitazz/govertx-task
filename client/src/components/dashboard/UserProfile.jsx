@@ -21,7 +21,7 @@ const UserProfile = ({ user, onProfileUpdate }) => {
   const handleSave = async () => {
     if (!userData.token) return;
     try {
-      const res = await axios.put('http://localhost:5000/user/update-profile', form, {
+      const res = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/user/update-profile`, form, {
         headers: { Authorization: `Bearer ${userData?.token}` },
       });
       

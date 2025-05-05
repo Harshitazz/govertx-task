@@ -24,7 +24,7 @@ export default function UserDashboard() {
     if (!isAuthenticated) return;
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/user/dashboard`, {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/dashboard`, {
         headers: { Authorization: `Bearer ${userData.token}` }
       });
       setProfile(response.data);

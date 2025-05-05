@@ -11,7 +11,7 @@ export default function UserManagement({users,onCreditChange}) {
   const updateCredits = async (userId) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/admin/${userId}/credits`,
+        `${import.meta.env.VITE_BACKEND_URL}/admin/${userId}/credits`,
         { credits: parseInt(creditInput) },
         {
           headers: {
