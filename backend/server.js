@@ -14,16 +14,19 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('MongoDB error:', err));
-
 // Use routes
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/feeds', feedRoutes);
 app.use('/admin', adminRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Start the server first
+const PORT = process.env.PORT || 8080; // Changed default from 5000 to 8080
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// Then connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('MongoDB error:', err));
