@@ -20,11 +20,12 @@ app.use('/user', userRoutes);
 app.use('/feeds', feedRoutes);
 app.use('/admin', adminRoutes);
 
-// Start the server first
-const PORT = process.env.PORT || 8080; // Changed default from 5000 to 8080
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
+
 
 // Then connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
