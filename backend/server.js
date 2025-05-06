@@ -25,5 +25,5 @@ app.use('/user', userRoutes);
 app.use('/feeds', feedRoutes);
 app.use('/admin', adminRoutes);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.H_PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
